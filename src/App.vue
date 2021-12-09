@@ -26,5 +26,4 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   color: $page-background;
 }
-
 </style>

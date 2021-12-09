@@ -15,11 +15,12 @@ export default {
   background: $search-color;
   border: 0;
   border-radius: 2%;
-  height: 25px;
+  height: 35px;
   min-width: 150px;
 }
 
 .input::placeholder {
   color: $search-placeholder-color;
+  padding-left: 15px;
 }
 </style>

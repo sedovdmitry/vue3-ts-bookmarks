@@ -1,17 +1,40 @@
 <template>
   <div class="home">
-
+    <bookmark-list
+      class="bookmarkList"
+      :bookmarks="bookmarks"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent } from 'vue';
+import { Bookmark } from '@/types/Bookmark';
+import BookmarkList from '@/components/BookmarkList.vue';
 
-@Options({
+export default defineComponent({
+  name: 'home',
   components: {
-    HelloWorld,
+    BookmarkList,
   },
-})
-export default class Home extends Vue {}
+  data() {
+    return {
+      bookmarks: [] as Bookmark[],
+    };
+  },
+  mounted() {
+    this.bookmarks = this.$store.state.bookmarks;
+    console.log(this.bookmarks);
+  },
+});
 </script>
+<style scoped lang="scss">
+.home {
+  display: flex;
+  justify-content: center;
+  max-width: 960px;
+  margin-top: 20px;
+  background-color: $bookmarks-list;
+  color: $text-color;
+}
+</style>
