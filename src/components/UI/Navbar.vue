@@ -33,9 +33,11 @@ export default defineComponent({
 }
 .navbar__home {
   font-weight: 600;
+  color: $text-color;
 }
 .navbar__btns {
   margin-left: auto;
+  color: $text-color;
 }
 .navbar__search {
   width: 100%;

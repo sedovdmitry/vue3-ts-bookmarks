@@ -24,6 +24,9 @@ export default defineComponent({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $page-background;
+  margin: auto;
+  width: auto;
+  height: 2000px;
+  background-color: whitesmoke;
 }
 </style>

@@ -28,7 +28,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .bookmarks {
-  max-width: 960px;
-  background: aliceblue;
+  justify-content: left;
+  width: 100%;
+  background: $bookmarks-list;
 }
 </style>

@@ -1,9 +1,11 @@
 <template>
   <div class="home">
-    <bookmark-list
-      class="bookmarkList"
-      :bookmarks="bookmarks"
-    />
+    <div class="container">
+      <bookmark-list
+        class="bookmarkList"
+        :bookmarks="bookmarks"
+      />
+    </div>
   </div>
 </template>
 
@@ -32,9 +34,7 @@ export default defineComponent({
 .home {
   display: flex;
   justify-content: center;
-  max-width: 960px;
-  margin-top: 20px;
-  background-color: $bookmarks-list;
+  padding-top: 20px;
   color: $text-color;
 }
 </style>
