@@ -1,10 +1,18 @@
 <template>
-  <input type="text" class="input" placeholder="Искать в закладках" />
+  <input :value="modelValue" @input="updateInput" type="text" class="input"  />
 </template>
 
 <script>
 export default {
   name: 'my-input',
+  props: {
+    modelValue: [String, Number],
+  },
+  methods: {
+    updateInput(event) {
+      this.$emit('update:modelValue', event.target.value);
+    },
+  },
 };
 </script>
 
@@ -18,6 +26,9 @@ export default {
   height: 35px;
   min-width: 150px;
   caret-color: $search-placeholder-color;
+  color: $search-placeholder-color;
+  font-size: 20px;
+  padding: 0 10px;
 }
 
 .input::placeholder {
@@ -27,5 +38,6 @@ export default {
 
 .input:focus{
   outline: none;
+  color: $search-placeholder-color;
 }
 </style>

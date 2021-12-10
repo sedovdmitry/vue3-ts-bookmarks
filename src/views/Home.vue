@@ -1,11 +1,9 @@
 <template>
   <div class="home">
     <div class="container">
-      <div><b>page:</b> {{ this.$store.state.bookmark.page }}</div>
-      <div><b>totalPages:</b> {{ this.$store.state.bookmark.totalPages }}</div>
       <bookmark-list
         class="bookmarkList"
-        :bookmarks="this.$store.state.bookmark.bookmarks"
+        :bookmarks="this.$store.getters['bookmark/searchedBookmarks']"
       />
     </div>
   </div>
@@ -24,7 +22,7 @@ export default defineComponent({
 
   },
   mounted() {
-    this.$store.dispatch('bookmark/loadBookmarks');
+    // this.$store.dispatch('bookmark/loadBookmarks');
   },
 });
 </script>

@@ -1,9 +1,13 @@
 <template>
   <div class="navbar">
     <div class="navbar__home" @click="$router.push('/')">Закладки</div>
-    <div class="navbar__search"><my-input/></div>
+    <div class="navbar__search">
+      <my-input
+        v-model="search"
+        placeholder="Искать в закладках"
+      />
+    </div>
     <div class="navbar__btns">
-      <div @click="$router.push('/add-bookmark')">Добавить закладку</div>
       <div @click="$router.push('/about')" style="margin-left: 20px">О сайте</div>
     </div>
   </div>
@@ -17,6 +21,16 @@ export default defineComponent({
   name: 'navbar',
   components: {
     MyInput,
+  },
+  computed: {
+    search: {
+      get() {
+        return this.$store.state.bookmark.searchQuery;
+      },
+      set(value) {
+        this.$store.commit('bookmark/setSearchQuery', value);
+      },
+    },
   },
 });
 </script>

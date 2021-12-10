@@ -22,13 +22,17 @@ const bookmarkModule = {
     totalPages: 0,
   }),
   getters: {
-
+    searchedBookmarks(state: State): Bookmark[] {
+      return state.bookmarks.filter(
+        (b: Bookmark) => b.name.toLowerCase().includes(state.searchQuery.toLowerCase()),
+      );
+    },
   },
   mutations: {
-    setBookmarks(state: State, bookmarks: Bookmark[]) {
+    setBookmarks(state: State, bookmarks: Bookmark[]): void {
       state.bookmarks = bookmarks;
     },
-    setBookmarksFromApi(state: State, articles: Article[]) {
+    setBookmarksFromApi(state: State, articles: Article[]): void {
       const bookmarks: Bookmark[] = articles.map((article) => ({
         name: article.title,
         url: article.url,
@@ -38,21 +42,21 @@ const bookmarkModule = {
       }));
       state.bookmarks = [...state.bookmarks, ...bookmarks];
     },
-    setLoading(state: State, flag: boolean) {
+    setLoading(state: State, flag: boolean): void {
       state.isBookmarkLoading = flag;
     },
-    setSearchQuery(state: State, searchQuery: string) {
+    setSearchQuery(state: State, searchQuery: string): void {
       state.searchQuery = searchQuery;
     },
-    setPage(state: State, page: number) {
+    setPage(state: State, page: number): void {
       state.page = page;
     },
-    setTotalPages(state: State, totalPages: number) {
+    setTotalPages(state: State, totalPages: number): void {
       state.totalPages = totalPages;
     },
   },
   actions: {
-    async loadBookmarks(context: any) {
+    async loadBookmarks(context: any): Promise<void> {
       context.commit('setLoading', true);
       const data = await fetchBookmarks(1, 10);
       console.log('data', data);
