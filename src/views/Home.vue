@@ -25,8 +25,8 @@ export default defineComponent({
     };
   },
   mounted() {
-    this.bookmarks = this.$store.state.bookmarks;
-    console.log(this.bookmarks);
+    this.bookmarks = this.$store.state.bookmark.bookmarks;
+    this.$store.dispatch('bookmark/loadBookmarks');
   },
 });
 </script>

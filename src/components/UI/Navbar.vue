@@ -34,6 +34,7 @@ export default defineComponent({
 .navbar__home {
   font-weight: 600;
   color: $text-color;
+  cursor: pointer;
 }
 .navbar__btns {
   margin-left: auto;
