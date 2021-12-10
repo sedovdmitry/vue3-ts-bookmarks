@@ -1,9 +1,11 @@
 <template>
   <div class="home">
     <div class="container">
+      <div><b>page:</b> {{ this.$store.state.bookmark.page }}</div>
+      <div><b>totalPages:</b> {{ this.$store.state.bookmark.totalPages }}</div>
       <bookmark-list
         class="bookmarkList"
-        :bookmarks="bookmarks"
+        :bookmarks="this.$store.state.bookmark.bookmarks"
       />
     </div>
   </div>
@@ -11,7 +13,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Bookmark } from '@/types/Bookmark';
 import BookmarkList from '@/components/BookmarkList.vue';
 
 export default defineComponent({
@@ -19,13 +20,10 @@ export default defineComponent({
   components: {
     BookmarkList,
   },
-  data() {
-    return {
-      bookmarks: [] as Bookmark[],
-    };
+  computed: {
+
   },
   mounted() {
-    this.bookmarks = this.$store.state.bookmark.bookmarks;
     this.$store.dispatch('bookmark/loadBookmarks');
   },
 });

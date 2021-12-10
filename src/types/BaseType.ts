@@ -1,15 +1,15 @@
 export class BaseType {
   constructor() {
-    this.createdAt = new Date();
+    this.createdAt = Date.now();
     this.updatedAt = null;
     this.deletedAt = null;
   }
 
-  createdAt: Date;
+  createdAt: number;
 
-  updatedAt: Date | null;
+  updatedAt: number | null;
 
-  deletedAt: Date | null;
+  deletedAt: number | null;
 }
 
 export default BaseType;
