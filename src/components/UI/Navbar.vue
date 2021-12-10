@@ -7,8 +7,8 @@
         placeholder="Искать в закладках"
       />
     </div>
-    <div class="navbar__btns">
-      <div @click="$router.push('/about')" style="margin-left: 20px">О сайте</div>
+    <div class="navbar__menu">
+      <font-awesome-icon icon="ellipsis-v" />
     </div>
   </div>
 </template>
@@ -50,10 +50,16 @@ export default defineComponent({
   color: $text-color;
   cursor: pointer;
 }
-.navbar__btns {
+.navbar__menu {
   margin-left: auto;
   color: $text-color;
+  align-items: center;
+  padding: 15px;
+  &:hover {
+    cursor: pointer;
+  }
 }
+
 .navbar__search {
   width: 100%;
   display: flex;

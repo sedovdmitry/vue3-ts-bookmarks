@@ -4,7 +4,7 @@
       {{bookmark.name}}
     </div>
     <div class="bookmark__btn">
-      <div>Удалить</div>
+      <font-awesome-icon icon="ellipsis-v" />
     </div>
   </div>
 </template>
@@ -53,6 +53,6 @@ export default defineComponent({
   align-items: center;
   cursor: pointer;
   color: $bookmark-color;
-  padding: 0 10px;
+  padding: 0 15px;
 }
 </style>
