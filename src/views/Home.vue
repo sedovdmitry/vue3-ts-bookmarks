@@ -1,10 +1,14 @@
 <template>
   <div class="home">
     <div class="container">
-      <bookmark-list
-        class="bookmarkList"
-        :bookmarks="this.$store.getters['bookmark/searchedBookmarks']"
-      />
+      <div class="flex">
+        <div class="col1">
+          <bookmark-list
+            class="bookmarkList"
+            :bookmarks="this.$store.getters['bookmark/searchedBookmarks']"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -32,5 +36,8 @@ export default defineComponent({
   justify-content: center;
   padding-top: 20px;
   color: $text-color;
+}
+.bookmarkList {
+  width: 100%;
 }
 </style>

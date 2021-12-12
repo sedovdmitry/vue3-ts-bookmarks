@@ -4,7 +4,17 @@
       {{bookmark.name}}
     </div>
     <div class="bookmark__btn">
-      <font-awesome-icon icon="ellipsis-v" />
+      <my-dropdown-menu>
+        <section class="option">
+          <button @click="sayHello">This is button for method</button>
+        </section>
+        <section class="option">
+          <a href="https://duckduckgo.com">This is basic a -link</a>
+        </section>
+        <section class="option">
+          <router-link to="/about">This is Vue router link</router-link>
+        </section>
+      </my-dropdown-menu>
     </div>
   </div>
 </template>

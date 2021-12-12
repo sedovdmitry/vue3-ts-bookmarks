@@ -29,15 +29,19 @@ export default {
   color: $search-placeholder-color;
   font-size: 20px;
   padding: 0 10px;
+  &::placeholder{
+    color: $search-placeholder-color;
+    padding-left: 15px;
+  }
+  &:focus {
+    outline: none;
+    color: $search-placeholder-color;
+  }
 }
 
-.input::placeholder {
-  color: $search-placeholder-color;
-  padding-left: 15px;
-}
-
-.input:focus{
-  outline: none;
-  color: $search-placeholder-color;
+@media (max-width: 768px) {
+  .input {
+    width: 100%;
+  }
 }
 </style>

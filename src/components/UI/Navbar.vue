@@ -8,7 +8,18 @@
       />
     </div>
     <div class="navbar__menu">
-      <font-awesome-icon icon="ellipsis-v" />
+      <my-dropdown-menu iconWhite>
+        <section class="option">
+          <button @click="sayHello">This is button for method</button>
+        </section>
+        <section class="option">
+          <a href="https://duckduckgo.com">This is basic a -link</a>
+        </section>
+        <section class="option">
+          <router-link to="/about">This is Vue router link</router-link>
+        </section>
+      </my-dropdown-menu>
+
     </div>
   </div>
 </template>
@@ -49,12 +60,14 @@ export default defineComponent({
   font-weight: 600;
   color: $text-color;
   cursor: pointer;
+  margin-right: 10px;
+  padding-right: 10px;
 }
 .navbar__menu {
   margin-left: auto;
   color: $text-color;
   align-items: center;
-  padding: 15px;
+  padding: 15px 0 15px 20px;
   &:hover {
     cursor: pointer;
   }
