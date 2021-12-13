@@ -5,14 +5,25 @@
     </div>
     <div class="bookmark__btn">
       <my-dropdown-menu>
-        <section class="option">
-          <button @click="sayHello">This is button for method</button>
+        <section class="option" @click="editBookmark">
+          <button
+            :v-model="bookmark"
+          >
+            <font-awesome-icon
+              class="margin__right__10"
+              icon="pencil-alt"
+            />
+            Изменить закладку
+          </button>
         </section>
         <section class="option">
-          <a href="https://duckduckgo.com">This is basic a -link</a>
-        </section>
-        <section class="option">
-          <router-link to="/about">This is Vue router link</router-link>
+          <button>
+            <font-awesome-icon
+              class="margin__right__10"
+              icon="trash"
+            />
+            Удалить закладку
+          </button>
         </section>
       </my-dropdown-menu>
     </div>
@@ -33,6 +44,10 @@ export default defineComponent({
   methods: {
     openInNewTab() {
       window.open(this.bookmark.url, '_blank').focus();
+    },
+    editBookmark() {
+      this.$store.commit('bookmark/setEditedBookmark', this.bookmark);
+      this.$router.push('/bookmark');
     },
   },
 });
@@ -65,4 +80,5 @@ export default defineComponent({
   color: $bookmark-color;
   padding: 0 15px;
 }
+
 </style>

@@ -3,8 +3,10 @@
     <div class="navbar__home" @click="$router.push('/')">Закладки</div>
     <div class="navbar__search">
       <my-input
+        v-focus
         v-model="search"
         placeholder="Искать в закладках"
+        typeInput="main"
       />
     </div>
     <div class="navbar__menu">
@@ -16,7 +18,7 @@
           <a href="https://duckduckgo.com">This is basic a -link</a>
         </section>
         <section class="option">
-          <router-link to="/about">This is Vue router link</router-link>
+          <router-link to="/about">О сайте</router-link>
         </section>
       </my-dropdown-menu>
 
@@ -61,7 +63,7 @@ export default defineComponent({
   color: $text-color;
   cursor: pointer;
   margin-right: 10px;
-  padding-right: 10px;
+  padding: 15px;
 }
 .navbar__menu {
   margin-left: auto;

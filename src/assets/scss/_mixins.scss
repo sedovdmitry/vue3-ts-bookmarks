@@ -1,0 +1,6 @@
+@mixin controller__active {
+  &:hover {
+    color: $bookmark-color__active;
+    background-color: $bookmark-bg__active;
+  }
+}

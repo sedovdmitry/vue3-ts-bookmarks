@@ -9,7 +9,7 @@
       <font-awesome-icon
         icon="ellipsis-v"
         class="flex-item"
-        :class="iconWhite === true ? 'icon__light' : 'icon__dark'"
+        :class="iconWhite ? 'icon__light' : 'icon__dark'"
       />
     </button>
 
@@ -23,7 +23,6 @@
 
 <script>
 import { defineComponent } from 'vue';
-// import vClickOutside from 'click-outside-vue3';
 
 export default defineComponent({
   name: 'my-dropdown-menu',
@@ -42,17 +41,12 @@ export default defineComponent({
       isOpen: false,
     };
   },
-  /*
-  directives: {
-    // clickOutside: vClickOutside.directive,
-  }, */
   methods: {
     openClose() {
       this.isOpen = !this.isOpen;
     },
     onClickOutside() {
       this.isOpen = false;
-      console.log('clicked outside');
     },
   },
 });

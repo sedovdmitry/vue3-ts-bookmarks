@@ -10,6 +10,7 @@ export interface State {
   page: number,
   pageSize: number,
   totalPages: number,
+  editedBookmark: Bookmark | null,
 }
 
 const bookmarkModule = {
@@ -20,12 +21,26 @@ const bookmarkModule = {
     page: 1,
     pageSize: 10,
     totalPages: 0,
+    editedBookmark: null,
   }),
   getters: {
     searchedBookmarks(state: State): Bookmark[] {
       return state.bookmarks.filter(
         (b: Bookmark) => b.name.toLowerCase().includes(state.searchQuery.toLowerCase()),
       );
+    },
+    searchedAndSortedBookmarks(state: State, getters: any): Bookmark[] {
+      return getters.searchedBookmarks.sort(
+        (a: Bookmark, b: Bookmark) => b.createdAt - a.createdAt,
+      );
+    },
+    /*
+    searchByCreatedAt: (state: State) => {
+      console.log(state.editedBookmark?.createdAt);
+      return state.bookmarks.find((b: Bookmark) => b.createdAt === state.editedBookmark?.createdAt);
+    }, */
+    getEditedBookmark(state: State): Bookmark | null {
+      return state.editedBookmark;
     },
   },
   mutations: {
@@ -53,6 +68,14 @@ const bookmarkModule = {
     },
     setTotalPages(state: State, totalPages: number): void {
       state.totalPages = totalPages;
+    },
+    setEditedBookmark(state: State, bookmark: Bookmark): void {
+      state.editedBookmark = bookmark;
+    },
+    editBookmark(state: State, payload: Bookmark): void {
+      const bookmark = state.bookmarks
+        .find((b) => b.createdAt === payload.createdAt);
+      Object.assign(bookmark, payload);
     },
   },
   actions: {

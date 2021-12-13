@@ -1,14 +1,14 @@
 import { createApp } from 'vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import App from './App.vue';
 import components from '@/components/UI';
 import directives from '@/directives';
 import router from './router';
 import store from './store';
 
-library.add(faEllipsisV);
+library.add(faEllipsisV, faPencilAlt, faTrash);
 
 const app = createApp(App);
 

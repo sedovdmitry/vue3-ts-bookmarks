@@ -26,7 +26,7 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   margin: auto;
   width: auto;
-  height: 2000px;
+  height: 100vh;
   background-color: whitesmoke;
 }
 </style>
