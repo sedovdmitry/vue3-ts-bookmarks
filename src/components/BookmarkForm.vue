@@ -1,24 +1,40 @@
 <template>
   <form @submit.prevent>
-    <my-input
-      v-focus
-      v-model="bookmark.url"
-      type="text"
-      placeholder="ссылка на закладку"
-      inputType="default"
-    />
-    <my-input
-      type="text"
-      v-model="bookmark.name"
-      placeholder="Название закладки"
-      inputType="default"
-    />
-    <my-button class="formButton" @click="saveBookmark">Сохранить</my-button>
+    <div class="form__field">
+      <label>Ссылка</label>
+      <my-input
+        v-focus
+        v-model="bookmark.url"
+        type="text"
+        placeholder="ссылка на закладку"
+        inputType="default"
+        :class="{ error: v$.bookmark.url.$errors.length }"
+      />
+    </div>
+    <div class="form__field">
+      <label>Название</label>
+      <my-input
+        type="text"
+        v-model="bookmark.name"
+        placeholder="Название закладки"
+        inputType="default"
+        :class="{ error: v$.bookmark.name.$errors.length }"
+      />
+    </div>
+    <my-button
+      class="formButton"
+      @click="saveBookmark"
+      :disabled="v$.bookmark.$invalid"
+    >
+      Сохранить
+    </my-button>
   </form>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
+import { required, minLength, maxLength } from '@vuelidate/validators';
+import { useVuelidate } from '@vuelidate/core';
 
 export default defineComponent({
   name: 'bookmark-form',
@@ -29,6 +45,23 @@ export default defineComponent({
         name: '',
         url: '',
         createdAt: null,
+      },
+    };
+  },
+  setup: () => ({ v$: useVuelidate() }),
+  validations() {
+    return {
+      bookmark: {
+        name: {
+          required,
+          min: minLength(4),
+          $message: 'Минимум 4 символа',
+        },
+        url: {
+          required,
+          min: minLength(10),
+          $message: 'Минимум 10 символов',
+        },
       },
     };
   },
@@ -52,9 +85,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    console.log();
     const editedBookmark = this.$store.getters['bookmark/getEditedBookmark'];
-    // this.bookmarks = this.$store.state.bookmark.bookmarks.filter();
     if (editedBookmark) {
       this.bookmark.name = editedBookmark.name;
       this.bookmark.url = editedBookmark.url;
@@ -64,7 +95,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 form {
   display: flex;
   flex-direction: column;
@@ -74,5 +105,17 @@ form {
 .formButton {
   align-self: flex-end;
   margin-top: 15px;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.error {
+  border: 2px solid darkred;
 }
 </style>

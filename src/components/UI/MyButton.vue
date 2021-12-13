@@ -20,9 +20,17 @@ export default defineComponent({
   background: none;
 
   @include controller__active;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled, [disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: default;
+  }
 }
 
-.bookButton:hover {
-  cursor: pointer;
-}
 </style>

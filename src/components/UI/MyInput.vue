@@ -28,7 +28,6 @@ export default {
 
 <style scoped lang="scss">
 .input {
-  display: flex;
   width: 50%;
   border: 0;
   border-radius: 2%;
@@ -60,7 +59,6 @@ export default {
   width: 75%;
   border: 1px solid $search-placeholder-color;
   justify-content: center;
-  margin-top: 10px;
 }
 
 </style>
