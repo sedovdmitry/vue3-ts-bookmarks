@@ -5,26 +5,18 @@
     </div>
     <div class="bookmark__btn">
       <my-dropdown-menu>
-        <section class="option" @click="editBookmark">
-          <button
-            :v-model="bookmark"
-          >
-            <font-awesome-icon
-              class="margin__right__10"
-              icon="pencil-alt"
-            />
-            Изменить закладку
-          </button>
-        </section>
-        <section class="option">
-          <button>
-            <font-awesome-icon
-              class="margin__right__10"
-              icon="trash"
-            />
-            Удалить закладку
-          </button>
-        </section>
+        <my-dropdown-option
+          :bookmark="bookmark"
+          @click="editBookmark"
+          icon="trash"
+          text="Изменить закладку"
+        />
+        <my-dropdown-option
+          :bookmark="bookmark"
+          @click="deleteBookmark"
+          icon="trash"
+          text="Удалить закладку"
+        />
       </my-dropdown-menu>
     </div>
   </div>
@@ -32,9 +24,11 @@
 
 <script>
 import { defineComponent } from 'vue';
+import MyDropdownOption from '@/components/UI/MyDropdownOption.vue';
 
 export default defineComponent({
   name: 'bookmark-item',
+  components: { MyDropdownOption },
   props: {
     bookmark: {
       type: Object,
@@ -48,6 +42,10 @@ export default defineComponent({
     editBookmark() {
       this.$store.commit('bookmark/setEditedBookmark', this.bookmark);
       this.$router.push('/bookmark');
+    },
+    deleteBookmark() {
+      this.$store.commit('bookmark/deleteBookmark', this.bookmark);
+      this.$emit('closeDropdown');
     },
   },
 });

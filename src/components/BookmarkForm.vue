@@ -33,7 +33,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { required, minLength, maxLength } from '@vuelidate/validators';
+import { required, minLength } from '@vuelidate/validators';
 import { useVuelidate } from '@vuelidate/core';
 
 export default defineComponent({
@@ -42,6 +42,7 @@ export default defineComponent({
     return {
       bookmarks: [],
       bookmark: {
+        id: null,
         name: '',
         url: '',
         createdAt: null,
@@ -66,12 +67,14 @@ export default defineComponent({
     };
   },
   methods: {
-    saveBookmark() {
+    saveBookmark() { // handle: edit + new
       if (this.bookmark.createdAt) { // edit bookmark
         this.bookmark.updatedAt = Date.now();
         this.$store.commit('bookmark/editBookmark', this.bookmark);
         this.$store.commit('bookmark/setEditedBookmark', null);
+        this.$router.push('/');
       } else { // new bookmark, send data to parent
+        this.bookmark.id = Math.floor(Math.random() * (1000000 + 1));
         this.bookmark.createdAt = Date.now();
         this.bookmark.updatedAt = null;
         this.bookmark.deletedAt = null;
@@ -87,6 +90,7 @@ export default defineComponent({
   mounted() {
     const editedBookmark = this.$store.getters['bookmark/getEditedBookmark'];
     if (editedBookmark) {
+      this.bookmark.id = editedBookmark.id;
       this.bookmark.name = editedBookmark.name;
       this.bookmark.url = editedBookmark.url;
       this.bookmark.createdAt = editedBookmark.createdAt;

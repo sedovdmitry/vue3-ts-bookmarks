@@ -34,11 +34,6 @@ const bookmarkModule = {
         (a: Bookmark, b: Bookmark) => b.createdAt - a.createdAt,
       );
     },
-    /*
-    searchByCreatedAt: (state: State) => {
-      console.log(state.editedBookmark?.createdAt);
-      return state.bookmarks.find((b: Bookmark) => b.createdAt === state.editedBookmark?.createdAt);
-    }, */
     getEditedBookmark(state: State): Bookmark | null {
       return state.editedBookmark;
     },
@@ -49,6 +44,7 @@ const bookmarkModule = {
     },
     setBookmarksFromApi(state: State, articles: Article[]): void {
       const bookmarks: Bookmark[] = articles.map((article) => ({
+        id: Math.floor(Math.random() * (1000000 + 1)),
         name: article.title,
         url: article.url,
         createdAt: Date.now(),
@@ -73,9 +69,13 @@ const bookmarkModule = {
       state.editedBookmark = bookmark;
     },
     editBookmark(state: State, payload: Bookmark): void {
+      console.log('edit', payload);
       const bookmark = state.bookmarks
-        .find((b) => b.createdAt === payload.createdAt);
+        .find((b) => b.id === payload.id);
       Object.assign(bookmark, payload);
+    },
+    deleteBookmark(state: State, payload: Bookmark): void {
+      state.bookmarks = state.bookmarks.filter((b) => b.id !== payload.id);
     },
   },
   actions: {
