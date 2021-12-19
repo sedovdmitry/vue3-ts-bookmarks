@@ -82,8 +82,10 @@ export default defineComponent({
       }
 
       this.bookmark = {
+        id: null,
         name: '',
         url: '',
+        createdAt: null,
       };
     },
   },

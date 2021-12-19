@@ -15,6 +15,14 @@ const stubData = [
     updatedAt: null,
     deletedAt: null,
   },
+  {
+    id: 3,
+    name: 'Apple',
+    url: 'https://apple.com/',
+    createdAt: Date.now(),
+    updatedAt: null,
+    deletedAt: null,
+  },
 ];
 
 export default stubData;

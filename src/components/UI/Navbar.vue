@@ -15,7 +15,7 @@
           <button @click="sayHello">This is button for method</button>
         </section>
         <section class="option">
-          <a href="https://duckduckgo.com">This is basic a -link</a>
+          <router-link to="/bookmark">Добавить закладку</router-link>
         </section>
         <section class="option">
           <router-link to="/about">О сайте</router-link>

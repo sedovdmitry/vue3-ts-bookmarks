@@ -13,9 +13,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import BookmarkForm from '@/components/BookmarkForm.vue';
+import { Bookmark } from '@/types/Bookmark';
 
 export default defineComponent({
   name: 'Bookmark',
@@ -23,7 +24,7 @@ export default defineComponent({
     BookmarkForm,
   },
   methods: {
-    saveBookmark(bookmark) { // for new bookmark
+    saveBookmark(bookmark: Bookmark) { // for new bookmark
       const allBookmarks = this.$store.getters['bookmark/searchedBookmarks'];
       allBookmarks.push(bookmark);
       this.$store.commit('bookmark/setBookmarks', allBookmarks);

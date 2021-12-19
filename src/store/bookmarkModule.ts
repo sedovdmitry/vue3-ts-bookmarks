@@ -3,6 +3,11 @@ import fetchBookmarks from '@/services/newsAPI';
 import stubData from '@/store/stubData';
 import { Article } from '@/types/NewsApi.Interface';
 
+interface sortOptions {
+  name: string,
+  value: string
+}
+
 export interface State {
   bookmarks: Bookmark[],
   isBookmarkLoading: boolean,
@@ -11,6 +16,8 @@ export interface State {
   pageSize: number,
   totalPages: number,
   editedBookmark: Bookmark | null,
+  selectedSort: string;
+  sortOptions: sortOptions[],
 }
 
 const bookmarkModule = {
@@ -19,9 +26,15 @@ const bookmarkModule = {
     isBookmarkLoading: false,
     searchQuery: '',
     page: 1,
-    pageSize: 10,
-    totalPages: 0,
+    pageSize: 15,
+    totalPages: 1,
     editedBookmark: null,
+    selectedSort: 'createdAt',
+    sortOptions: [
+      { value: 'name', name: 'По названию' },
+      { value: 'url', name: 'По ссылкам' },
+      { value: 'createdAt', name: 'По дате' },
+    ],
   }),
   getters: {
     searchedBookmarks(state: State): Bookmark[] {
@@ -29,22 +42,35 @@ const bookmarkModule = {
         (b: Bookmark) => b.name.toLowerCase().includes(state.searchQuery.toLowerCase()),
       );
     },
-    searchedAndSortedBookmarks(state: State, getters: any): Bookmark[] {
-      return getters.searchedBookmarks.sort(
-        (a: Bookmark, b: Bookmark) => b.createdAt - a.createdAt,
-      );
+    searchedAndSortedBookmarks(state: State): Bookmark[] {
+      switch (state.selectedSort) {
+        case 'createdAt':
+          return [...state.bookmarks].sort(
+            (b1, b2) => b1.createdAt - b2.createdAt,
+          );
+        case 'name':
+          return [...state.bookmarks].sort(
+            (b1, b2) => b1.name?.localeCompare(b2.name),
+          );
+        case 'url':
+          return [...state.bookmarks].sort(
+            (b1, b2) => b1.url?.localeCompare(b2.url),
+          );
+        default:
+          return state.bookmarks;
+      }
     },
     getEditedBookmark(state: State): Bookmark | null {
       return state.editedBookmark;
     },
   },
   mutations: {
-    setBookmarks(state: State, bookmarks: Bookmark[]): void {
-      state.bookmarks = bookmarks;
+    setBookmarks(state: State, payload: Bookmark[]): void {
+      state.bookmarks = payload;
     },
-    setBookmarksFromApi(state: State, articles: Article[]): void {
-      const bookmarks: Bookmark[] = articles.map((article) => ({
-        id: Math.floor(Math.random() * (1000000 + 1)),
+    setBookmarksFromApi(state: State, payload: Article[]): void {
+      const bookmarks: Bookmark[] = payload.map((article) => ({
+        id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         name: article.title,
         url: article.url,
         createdAt: Date.now(),
@@ -53,23 +79,22 @@ const bookmarkModule = {
       }));
       state.bookmarks = [...state.bookmarks, ...bookmarks];
     },
-    setLoading(state: State, flag: boolean): void {
-      state.isBookmarkLoading = flag;
+    setLoading(state: State, payload: boolean): void {
+      state.isBookmarkLoading = payload;
     },
-    setSearchQuery(state: State, searchQuery: string): void {
-      state.searchQuery = searchQuery;
+    setSearchQuery(state: State, payload: string): void {
+      state.searchQuery = payload;
     },
-    setPage(state: State, page: number): void {
-      state.page = page;
+    setPage(state: State, payload: number): void {
+      state.page = payload;
     },
-    setTotalPages(state: State, totalPages: number): void {
-      state.totalPages = totalPages;
+    setTotalPages(state: State, payload: number): void {
+      state.totalPages = payload;
     },
     setEditedBookmark(state: State, bookmark: Bookmark): void {
       state.editedBookmark = bookmark;
     },
     editBookmark(state: State, payload: Bookmark): void {
-      console.log('edit', payload);
       const bookmark = state.bookmarks
         .find((b) => b.id === payload.id);
       Object.assign(bookmark, payload);
@@ -77,11 +102,14 @@ const bookmarkModule = {
     deleteBookmark(state: State, payload: Bookmark): void {
       state.bookmarks = state.bookmarks.filter((b) => b.id !== payload.id);
     },
+    setSelectedSort(state: State, payload: string): void {
+      state.selectedSort = payload;
+    },
   },
   actions: {
     async loadBookmarks(context: any): Promise<void> {
       context.commit('setLoading', true);
-      const data = await fetchBookmarks(1, 10);
+      const data = await fetchBookmarks(1, context.state.pageSize);
       console.log('data', data);
       if (data !== null && data.totalResults !== undefined) {
         context.commit('setTotalPages', Math.ceil(data.totalResults / context.state.pageSize));

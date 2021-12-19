@@ -8,7 +8,7 @@
         <my-dropdown-option
           :bookmark="bookmark"
           @click="editBookmark"
-          icon="trash"
+          icon="pencil-alt"
           text="Изменить закладку"
         />
         <my-dropdown-option
