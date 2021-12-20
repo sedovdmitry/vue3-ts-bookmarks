@@ -56,8 +56,8 @@ export default defineComponent({
     const callback = (entries: IntersectionObserverEntry[]) => {
       if (
         entries[0].isIntersecting
-        && this.$store.state.bookmark.page
-        <= this.$store.state.bookmark.totalArticles
+        && (this.$store.state.bookmark.page <= this.$store.state.bookmark.totalArticles)
+        && (this.$store.state.bookmark.page < 5)
       ) {
         this.$store.dispatch('bookmark/loadBookmarks'); // NEWS API call action
       }
