@@ -3,9 +3,11 @@
     <div class="container">
       <div class="flex">
         <div class="col1 app__controllers">
+          <iframe src="https://ghbtns.com/github-btn.html?user=sedovdmitry&repo=vue3-ts-bookmarks&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="Star repository Vue 3, Vuex, Typescript"></iframe>
           <my-select
             v-model="selectedSort"
             :options="sortOptions"
+            class="home__select"
           />
         </div>
 
@@ -80,7 +82,11 @@ export default defineComponent({
 
 .app__controllers {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home__select {
   height: 40px;
 }
 

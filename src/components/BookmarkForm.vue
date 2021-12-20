@@ -3,6 +3,7 @@
     <div class="form__field">
       <label>Название</label>
       <my-input
+        v-focus
         type="text"
         v-model="bookmark.name"
         placeholder="Название закладки"
@@ -13,7 +14,6 @@
     <div class="form__field">
       <label>Ссылка</label>
       <my-input
-        v-focus
         v-model="bookmark.url"
         type="text"
         placeholder="ссылка на закладку"
