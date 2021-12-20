@@ -57,7 +57,7 @@ export default defineComponent({
       if (
         entries[0].isIntersecting
         && this.$store.state.bookmark.page
-        <= this.$store.state.bookmark.totalPages
+        <= this.$store.state.bookmark.totalArticles
       ) {
         this.$store.dispatch('bookmark/loadBookmarks'); // NEWS API call action
       }

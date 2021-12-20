@@ -27,8 +27,8 @@ export default defineComponent({
     },
   },
   methods: {
-    changeOption(event: any) {
-      this.$emit('update:modelValue', event.target.value);
+    changeOption(event: Event) {
+      this.$emit('update:modelValue', (event.target as HTMLSelectElement).value);
     },
   },
 });

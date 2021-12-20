@@ -14,7 +14,7 @@ export interface State {
   searchQuery: string,
   page: number,
   pageSize: number,
-  totalPages: number,
+  totalArticles: number,
   editedBookmark: Bookmark | null,
   selectedSort: string;
   sortOptions: sortOptions[],
@@ -26,8 +26,8 @@ const bookmarkModule = {
     isBookmarkLoading: false,
     searchQuery: '',
     page: 1,
-    pageSize: 15,
-    totalPages: 1,
+    pageSize: 10,
+    totalArticles: 1,
     editedBookmark: null,
     selectedSort: 'createdAt',
     sortOptions: [
@@ -89,7 +89,7 @@ const bookmarkModule = {
       state.page = payload;
     },
     setTotalPages(state: State, payload: number): void {
-      state.totalPages = payload;
+      state.totalArticles = payload;
     },
     setEditedBookmark(state: State, bookmark: Bookmark): void {
       state.editedBookmark = bookmark;
@@ -111,8 +111,8 @@ const bookmarkModule = {
       context.commit('setLoading', true);
       const data = await fetchBookmarks(1, context.state.pageSize);
       console.log('data', data);
-      if (data !== null && data.totalResults !== undefined) {
-        context.commit('setTotalPages', Math.ceil(data.totalResults / context.state.pageSize));
+      if (data !== null && data.totalArticles !== undefined) {
+        context.commit('setTotalPages', Math.ceil(data.totalArticles / context.state.pageSize));
         context.commit('setBookmarksFromApi', data.articles);
         context.commit('setPage', context.state.page + 1);
       } else {

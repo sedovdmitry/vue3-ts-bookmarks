@@ -18,6 +18,6 @@ export interface Article {
 
 export interface NewsAPITypes {
     status?: string;
-    totalResults?: number;
+    totalArticles?: number;
     articles?: Article[];
 }

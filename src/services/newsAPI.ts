@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { NewsAPITypes } from '@/types/NewsApi.Interface';
 
-async function fetchBookmarks(page: number, pageSize: number): Promise<NewsAPITypes | null> {
+async function fetchBookmarks(page: number, max: number): Promise<NewsAPITypes | null> {
   try {
-    const response = await axios.get('https://newsapi.org/v2/top-headlines?country=us', {
+    const response = await axios.get('https://gnews.io/api/v4/top-headlines?country=us', {
       params: {
-        apiKey: process.env.VUE_APP_NEWSAPIKEY,
+        token: process.env.VUE_APP_GNEWS,
         page,
-        pageSize,
+        max,
       },
     });
     return response.data;
