@@ -1,6 +1,16 @@
 <template>
   <form @submit.prevent>
     <div class="form__field">
+      <label>Название</label>
+      <my-input
+        type="text"
+        v-model="bookmark.name"
+        placeholder="Название закладки"
+        inputType="default"
+        :class="{ error: v$.bookmark.name.$errors.length }"
+      />
+    </div>
+    <div class="form__field">
       <label>Ссылка</label>
       <my-input
         v-focus
@@ -9,16 +19,6 @@
         placeholder="ссылка на закладку"
         inputType="default"
         :class="{ error: v$.bookmark.url.$errors.length }"
-      />
-    </div>
-    <div class="form__field">
-      <label>Название</label>
-      <my-input
-        type="text"
-        v-model="bookmark.name"
-        placeholder="Название закладки"
-        inputType="default"
-        :class="{ error: v$.bookmark.name.$errors.length }"
       />
     </div>
     <my-button

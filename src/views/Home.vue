@@ -10,10 +10,12 @@
         </div>
 
         <div class="col1 margin__top__20">
-          <bookmark-list
-            class="bookmarkList"
-            :bookmarks="this.$store.getters['bookmark/searchedAndSortedBookmarks']"
-          />
+          <transition name="fade-loading">
+            <bookmark-list
+              class="bookmarkList"
+              :bookmarks="this.$store.getters['bookmark/searchedAndSortedBookmarks']"
+            />
+          </transition>
         </div>
       </div>
       <div ref="observer" class="observer"></div>
@@ -80,5 +82,16 @@ export default defineComponent({
   display: flex;
   justify-content: flex-end;
   height: 40px;
+}
+
+/* animation */
+.fade-loading-enter-active,
+.fade-loading-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-loading-enter-from,
+.fade-loading-leave-to {
+  opacity: 0;
 }
 </style>

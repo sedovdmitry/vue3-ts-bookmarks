@@ -35,5 +35,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-
+.custom-select {
+  border: 0;
+}
 </style>

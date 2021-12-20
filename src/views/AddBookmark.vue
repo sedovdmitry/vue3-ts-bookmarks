@@ -2,7 +2,12 @@
   <div class="container margin__top__20">
     <div class="flex">
       <div class="col1">
-        <h4>Добавление новой закладки</h4>
+        <h4 v-if="$store.state.bookmark?.editedBookmark?.name">
+          Редактирование закладки
+        </h4>
+        <h4 v-else>
+          Добавление новой закладки
+        </h4>
         <div class="form__content margin__top__20">
           <bookmark-form
             @save="saveBookmark"

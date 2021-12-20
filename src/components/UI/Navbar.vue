@@ -11,14 +11,19 @@
     </div>
     <div class="navbar__menu">
       <my-dropdown-menu iconWhite>
-        <section class="option">
-          <button @click="sayHello">This is button for method</button>
+        <section class="option" @click="this.$router.push('/bookmark');">
+            <font-awesome-icon
+              class="margin__right__10"
+              icon="plus"
+            />
+            Добавить закладку
         </section>
-        <section class="option">
-          <router-link to="/bookmark">Добавить закладку</router-link>
-        </section>
-        <section class="option">
-          <router-link to="/about">О сайте</router-link>
+        <section class="option" @click="this.$router.push('/about');">
+            <font-awesome-icon
+              class="margin__right__10"
+              icon="address-card"
+            />
+            О проекте
         </section>
       </my-dropdown-menu>
 
