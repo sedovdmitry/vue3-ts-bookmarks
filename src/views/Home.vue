@@ -59,7 +59,7 @@ export default defineComponent({
         && this.$store.state.bookmark.page
         <= this.$store.state.bookmark.totalPages
       ) {
-        // this.$store.dispatch('bookmark/loadBookmarks'); // NEWS API call action
+        this.$store.dispatch('bookmark/loadBookmarks'); // NEWS API call action
       }
     };
     const observer = new IntersectionObserver(callback, options);
