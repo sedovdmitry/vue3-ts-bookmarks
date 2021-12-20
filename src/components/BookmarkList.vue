@@ -2,13 +2,11 @@
   <transition name="fade-list">
     <div v-if="bookmarks.length > 0">
       <div class="bookmarks">
-        <transition-group name="bookmark-list">
-          <bookmark-item
-            v-for="bookmark in bookmarks"
-            :key="bookmark.createdAt"
-            :bookmark="bookmark"
-          />
-        </transition-group>
+        <bookmark-item
+          v-for="bookmark in bookmarks"
+          :key="bookmark.createdAt"
+          :bookmark="bookmark"
+        />
       </div>
     </div>
     <div v-else>
@@ -48,10 +46,6 @@ export default defineComponent({
   background: $bookmarks-list;
 }
 
-.add__button {
-
-}
-
 .fade-list-enter-active,
 .fade-list-leave-active {
   transition: opacity 0.5s ease;
@@ -62,20 +56,4 @@ export default defineComponent({
   opacity: 0;
 }
 
-.bookmark-list-item {
-  display: inline-block;
-  margin-right: 10px;
-}
-.bookmark-list-enter-active,
-.bookmark-list-leave-active {
-  transition: all .5s ease;
-}
-.bookmark-list-enter-from,
-.bookmark-list-leave-to {
-  opacity: 0;
-  transform: translateX(125px);
-}
-.bookmark-list-move {
-  transition: transform 0.8s ease;
-}
 </style>
