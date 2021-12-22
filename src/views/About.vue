@@ -43,7 +43,9 @@
           <ul>
             <li>In App we can add, delete and change our bookmarks</li>
             <li>Bookmarks is sortable</li>
-            <li>We call the API when user scroll down the page (only one time because free subscription plan on the GNEWS API can't get access to <b>page parameter</b> in the request)</li>
+            <li>We call the API when user scroll down the page (only one time because free
+              subscription plan on the GNEWS API can't get access to <b>page parameter</b>
+              in the request)</li>
           </ul>
           <p><img src="/structure-of-the-project.png" alt="Structure of the project"></p>
           <h2 id="project-setup">Project setup</h2>
