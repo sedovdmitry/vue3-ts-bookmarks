@@ -8,13 +8,13 @@
           <p>This is just
             <a href="https://studioratio.notion.site/Frontend-Ratio-d3983ed6d12e4cc0b844bed9b9417537">
               testing task
-            </a> for Notion Company. By task we need to use this template but this deprecated,
-            and I decide to use vue-cli.
+            </a> for Notion Company. By task we need to use this template, but it is deprecated,
+            and I decided to use vue-cli.
           </p>
           <p>
             App reproduce work standard feature Chrome browser:
             <a href="chrome://bookmarks/">chrome://bookmarks/</a>.
-            For imitate working with backend I use <a href="https://gnews.io">GNEWS API</a> -
+            For imitate working with the backend I am using <a href="https://gnews.io">GNEWS API</a> -
             you need get API token to run app locally.
           </p>
           <p><b><a href="https://github.com/sedovdmitry/vue3-ts-bookmarks/">Github repository</a></b></p>
@@ -36,13 +36,14 @@
             <li>Client API</li>
             <li>SCSS</li>
             <li>Fontawesome</li>
+            <li>Directives</li>
           </ul>
           <p>In this project I also use some features from Vue: directives and animation.</p>
           <h2 id="features">Features</h2>
           <ul>
             <li>In App we can add, delete and change our bookmarks</li>
             <li>Bookmarks is sortable</li>
-            <li>We call API when user scroll page</li>
+            <li>We call the API when user scroll down the page (only one time because free subscription plan on the GNEWS API can't get access to <b>page parameter</b> in the request)</li>
           </ul>
           <p><img src="/structure-of-the-project.png" alt="Structure of the project"></p>
           <h2 id="project-setup">Project setup</h2>
