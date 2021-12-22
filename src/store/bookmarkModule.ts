@@ -42,19 +42,19 @@ const bookmarkModule = {
         (b: Bookmark) => b.name.toLowerCase().includes(state.searchQuery.toLowerCase()),
       );
     },
-    searchedAndSortedBookmarks(state: State): Bookmark[] {
+    searchedAndSortedBookmarks(state: State, getters: any): Bookmark[] {
       switch (state.selectedSort) {
         case 'createdAt':
-          return [...state.bookmarks].sort(
-            (b1, b2) => b1.createdAt - b2.createdAt,
+          return getters.searchedBookmarks.sort(
+            (b1: Bookmark, b2: Bookmark) => b2.createdAt - b1.createdAt,
           );
         case 'name':
-          return [...state.bookmarks].sort(
-            (b1, b2) => b1.name?.localeCompare(b2.name),
+          return getters.searchedBookmarks.sort(
+            (b1: Bookmark, b2: Bookmark) => b1.name?.localeCompare(b2.name),
           );
         case 'url':
-          return [...state.bookmarks].sort(
-            (b1, b2) => b1.url?.localeCompare(b2.url),
+          return getters.searchedBookmarks.sort(
+            (b1: Bookmark, b2:Bookmark) => b1.url?.localeCompare(b2.url),
           );
         default:
           return state.bookmarks;
@@ -73,7 +73,7 @@ const bookmarkModule = {
         id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         name: article.title,
         url: article.url,
-        createdAt: Date.now(),
+        createdAt: Date.parse(article.publishedAt),
         updatedAt: null,
         deletedAt: null,
       }));
@@ -109,7 +109,7 @@ const bookmarkModule = {
   actions: {
     async loadBookmarks(context: any): Promise<void> {
       context.commit('setLoading', true);
-      const data = await fetchBookmarks(1, context.state.pageSize);
+      const data = await fetchBookmarks(context.state.page, context.state.pageSize);
       console.log('data', data);
       if (data !== null && data.totalArticles !== undefined) {
         context.commit('setTotalPages', Math.ceil(data.totalArticles / context.state.pageSize));

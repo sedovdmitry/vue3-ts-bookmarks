@@ -59,13 +59,13 @@ export default defineComponent({
       if (
         entries[0].isIntersecting
         && (this.$store.state.bookmark.page <= this.$store.state.bookmark.totalArticles)
-        && (this.$store.state.bookmark.page < 5)
+        && (this.$store.state.bookmark.page < 2) // we can't use pages for free subscribe plan
       ) {
         this.$store.dispatch('bookmark/loadBookmarks'); // NEWS API call action
       }
     };
     const observer = new IntersectionObserver(callback, options);
-    observer.observe(this.$refs.observer as HTMLInputElement);
+    observer.observe(this.$refs.observer as HTMLDivElement);
   },
 });
 </script>
