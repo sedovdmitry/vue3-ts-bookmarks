@@ -22,7 +22,7 @@ export interface State {
 
 const bookmarkModule = {
   state: (): State => ({
-    bookmarks: [...stubData],
+    bookmarks: [],
     isBookmarkLoading: false,
     searchQuery: '',
     page: 1,
