@@ -2,7 +2,9 @@
 
 ## Description
 
-This is just [testing task](https://studioratio.notion.site/Frontend-Ratio-d3983ed6d12e4cc0b844bed9b9417537) for Notion Company. By task we need to use [this template](https://github.com/vuejs-templates/webpack), but it is deprecated, and I decided to use vue-cli.
+This is just [testing task](https://studioratio.notion.site/Frontend-Ratio-d3983ed6d12e4cc0b844bed9b9417537) for one company. By task we need to use [this template](https://github.com/vuejs-templates/webpack), but it is deprecated, and I decided to use vue-cli.
+
+[![Main page screenshot](https://raw.githubusercontent.com/sedovdmitry/vue3-ts-bookmarks/main/public/Screenshot_main_page.png)](https://vue3-ts-bookmarks.vercel.app/)
 
 This App reproduces the work ot the standard feature of the Chrome browser: [chrome://bookmarks/](chrome://bookmarks/). For imitate working with the backend I am using [GNEWS API](https://gnews.io) - you need get an API token to run app locally.
 
@@ -12,7 +14,7 @@ This App reproduces the work ot the standard feature of the Chrome browser: [chr
 
 Vue cli presets
 
-![Vue cli preset](https://raw.githubusercontent.com/sedovdmitry/vue3-ts-bookmarks/main/public/project-preset.png)
+[![Vue cli preset](https://raw.githubusercontent.com/sedovdmitry/vue3-ts-bookmarks/main/public/project-preset.png)]
 
 * Vue 3
 * Typescript
@@ -31,7 +33,7 @@ Vue cli presets
 + Bookmarks is sortable
 + We call the API when user scroll down the page (only one time because free subscription plan on the GNEWS API can't get access to [page parameter](https://gnews.io/docs/v4#http-request-2) in the request)
 
-![Structure of the project](https://raw.githubusercontent.com/sedovdmitry/vue3-ts-bookmarks/main/public/structure-of-the-project.png)
+[![Structure of the project](https://raw.githubusercontent.com/sedovdmitry/vue3-ts-bookmarks/main/public/structure-of-the-project.png)]
 
 ## Project setup
 ```
