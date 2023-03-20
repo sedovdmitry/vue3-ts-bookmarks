@@ -9,13 +9,13 @@
           :bookmark="bookmark"
           @click="editBookmark"
           icon="pencil-alt"
-          text="Изменить закладку"
+          text="Change Bookmark"
         />
         <my-dropdown-option
           :bookmark="bookmark"
           @click="deleteBookmark"
           icon="trash"
-          text="Удалить закладку"
+          text="Delete Bookmark"
         />
       </my-dropdown-menu>
     </div>

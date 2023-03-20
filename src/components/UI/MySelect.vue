@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable -->
   <select class="custom-select" :value="modelValue" @change="changeOption">
-    <option disabled value="">Сортировка закладок</option>
+    <option disabled value="">Bookmark sorting</option>
     <option
       v-for="option in options"
       :key="option.value"

@@ -5,7 +5,7 @@
       <my-input
         v-focus
         v-model="search"
-        placeholder="Искать в закладках"
+        placeholder="Search in bookmarks"
         typeInput="main"
       />
     </div>
@@ -16,14 +16,14 @@
               class="margin__right__10"
               icon="plus"
             />
-            Добавить закладку
+            Add a Bookmark
         </section>
         <section class="option" @click="this.$router.push('/about');">
             <font-awesome-icon
               class="margin__right__10"
               icon="address-card"
             />
-            О проекте
+            About project
         </section>
       </my-dropdown-menu>
 

@@ -1,22 +1,22 @@
 <template>
   <form @submit.prevent>
     <div class="form__field">
-      <label>Название</label>
+      <label>Name</label>
       <my-input
         v-focus
         type="text"
         v-model="bookmark.name"
-        placeholder="Название закладки"
+        placeholder="Bookmark name"
         inputType="default"
         :class="{ error: v$.bookmark.name.$errors.length }"
       />
     </div>
     <div class="form__field">
-      <label>Ссылка</label>
+      <label>Link</label>
       <my-input
         v-model="bookmark.url"
         type="text"
-        placeholder="ссылка на закладку"
+        placeholder="Bookmark link"
         inputType="default"
         :class="{ error: v$.bookmark.url.$errors.length }"
       />
@@ -26,7 +26,7 @@
       @click="saveBookmark"
       :disabled="v$.bookmark.$invalid"
     >
-      Сохранить
+      Save
     </my-button>
   </form>
 </template>
@@ -56,12 +56,12 @@ export default defineComponent({
         name: {
           required,
           min: minLength(4),
-          $message: 'Минимум 4 символа',
+          $message: 'Minimum 4 characters',
         },
         url: {
           required,
           min: minLength(10),
-          $message: 'Минимум 10 символов',
+          $message: 'Minimum 10 characters',
         },
       },
     };

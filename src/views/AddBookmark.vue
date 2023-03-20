@@ -3,10 +3,10 @@
     <div class="flex">
       <div class="col1">
         <h4 v-if="$store.state.bookmark?.editedBookmark?.name">
-          Редактирование закладки
+          Editing this bookmark
         </h4>
         <h4 v-else>
-          Добавление новой закладки
+          Adding a new bookmark
         </h4>
         <div class="form__content margin__top__20">
           <bookmark-form

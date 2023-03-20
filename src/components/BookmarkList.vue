@@ -10,12 +10,12 @@
       </div>
     </div>
     <div v-else>
-      <h3>Список закладок пустой</h3>
+      <h3>Bookmark list is empty</h3>
       <my-button
         @click="$router.push('bookmark')"
         class="margin__top__20"
       >
-        Добавить закладку
+        Add a Bookmark
       </my-button>
     </div>
   </transition>

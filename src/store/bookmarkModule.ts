@@ -31,9 +31,9 @@ const bookmarkModule = {
     editedBookmark: null,
     selectedSort: 'createdAt',
     sortOptions: [
-      { value: 'name', name: 'По названию' },
-      { value: 'url', name: 'По ссылкам' },
-      { value: 'createdAt', name: 'По дате' },
+      { value: 'name', name: 'By name' },
+      { value: 'url', name: 'By link' },
+      { value: 'createdAt', name: 'By date' },
     ],
   }),
   getters: {
@@ -116,7 +116,7 @@ const bookmarkModule = {
         context.commit('setBookmarksFromApi', data.articles);
         context.commit('setPage', context.state.page + 1);
       } else {
-        console.log('Данные не были загружены, попробуйте позже');
+        console.log('Data was not loaded, please try again later');
       }
       context.commit('setLoading', false);
     },
