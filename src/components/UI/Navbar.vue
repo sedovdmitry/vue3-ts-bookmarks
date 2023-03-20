@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <div class="navbar__home" @click="$router.push('/')">Закладки</div>
+    <div class="navbar__home" @click="$router.push('/')">Bookmarks</div>
     <div class="navbar__search">
       <my-input
         v-focus

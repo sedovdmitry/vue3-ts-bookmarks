@@ -17,7 +17,7 @@ const stubData = [
   },
   {
     id: 2,
-    name: 'Функциональное программирование на JS',
+    name: 'Functional programming in JS',
     url: 'https://habr.com/ru/post/154105/',
     createdAt: Date.parse('Aug 15, 2021'),
     updatedAt: null,
